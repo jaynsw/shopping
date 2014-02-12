@@ -1,0 +1,13 @@
+{
+"address":{
+"country":"Australia",
+"state":"NSW",
+"city":"North Wharoonga",
+"stree":"36 Daly AV",
+"postcode":"2076"
+},
+"caculators":[
+"com.smallwebstore.ex.shopping.shipping.AusPostCaculator",
+"com.smallwebstore.ex.shopping.shipping.CubicWeightShippingCaculator",
+"com.smallwebstore.ex.shopping.shipping.FlatRateCaculator"
+]}

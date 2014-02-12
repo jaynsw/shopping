@@ -1,0 +1,10 @@
+{
+"url":"http://auspost.com.au/api/postage/parcel/domestic/service.json",
+"key":"bzfac4efaf7e7e51a4b1dbd7cc76cb31",
+"AUS_PARCEL_REGULAR":{"speed":"2+ days"},
+"AUS_PARCEL_REGULAR_SATCHEL_3KG":{"speed":"2+ days"},
+"AUS_PARCEL_EXPRESS":{"speed":"next business day"},
+"AUS_PARCEL_EXPRESS_SATCHEL_3KG":{"speed":"next business day"},
+"AUS_PARCEL_COURIER":{"speed":"same day"},
+"AUS_PARCEL_COURIER_SATCHEL_MEDIUM":{"speed":"same day"}
+}

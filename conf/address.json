@@ -1,0 +1,4 @@
+{
+"countries":["Australia","China","USA"],
+"compulsoryFields":["street","city","state","country","postcode","email"]
+}
