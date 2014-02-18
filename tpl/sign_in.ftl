@@ -14,56 +14,49 @@
 
 			
 
-<script type="text/javascript" src="/js/md5.js"></script>
+<script type="text/javascript" src="http://store.smallwebstore.com/js/md5.js"></script>
 <script>
-function sign_in(){
-	var email = $("#sign-in-email");
-	email = email.val();
-	var password = $("#sign-in-pwd").val();
+	function sign_in(){
+		var email = $("#sign-in-email");
+		email = email.val();
+		var password = $("#sign-in-pwd").val();
 
-	if (!email || email.length == 0){
-		show_alert("email can not be empty!");
-		return;
-	}
+		if (!email || email.length == 0){
+			show_alert("email can not be empty!");
+			return;
+		}
 
-	if (!password || password.length == 0){
-		show_alert("password can not be empty!");
-		return;
-	}
+		if (!password || password.length == 0){
+			show_alert("password can not be empty!");
+			return;
+		}
     	
-	var data = {'email': email,'password':hex_md5(password)};
+		var data = {'email': email,'password':hex_md5(password)};
 
 <#if redirect??>
-	data.redirect = '${redirect}';
+		data.redirect = '${redirect}';
 </#if>
 		
-	$.post('/weblet/shopping/anonymous_action/signIn',$.param(data) ,function(data, status,jqXHR) {
-		var json = $.parseJSON(data);
-		var error = json.error;		
-		if (error == 'success') {
-			window.location = json.redirect;
-		} else if (error == 'error_email'){
-			show_alert('email is not valid!');
-		} else if (error == 'error_password'){
-			show_alert('password is not valid!');
-		} else if (error == 'email_not_found'){
-			show_alert('email is not found!');
-		} else if (error == 'password_mismatch'){
-			show_alert('password is mismatched!');
-		} else {
-			show_alert('unknow error!');
-
-		}
-	});
-
-	
-}
-
-
-			function show_box(id) {
-			 jQuery('.widget-box.visible').removeClass('visible');
-			 jQuery('#'+id).addClass('visible');
+		$.post('/weblet/anonymous_action/signIn',$.param(data) ,function(data, status,jqXHR) {
+			var json = $.parseJSON(data);
+			var error = json.error;		
+			if (error == 'success') {
+				window.location = json.redirect;
+			} else if (error == 'error_email'){
+				show_alert('email is not valid!');
+			} else if (error == 'error_password'){
+				show_alert('password is not valid!');
+			} else if (error == 'email_not_found'){
+				show_alert('email is not found!');
+			} else if (error == 'password_mismatch'){
+				show_alert('password is mismatched!');
+			} else {
+				show_alert('unknow error!');
 			}
+		});
+
+	}
+
 
 	function sign_up(){
 		
@@ -73,33 +66,33 @@ function sign_in(){
 		var nickName = $("#sign-up-nickName").val();
 
 		if (!nickName || nickName.length == 0){
-			show_box_alert("alert-popup-register", "nickName can not be empty!");
+			show_alert("nickName can not be empty!");
 			return;
 		}
 
 		if (!email || email.length == 0){
-			show_box_alert("alert-popup-register", "nickName can not be empty!");
+			show_alert("nickName can not be empty!");
 			return;
 		}
 
 		if (!password || password.length == 0){
-			show_box_alert("alert-popup-register", "password can not be empty!");
+			show_alert("password can not be empty!");
 			return;
 		}
 
 		if (!repeatPassword || repeatPassword.length == 0 ) {
-			show_box_alert("alert-popup-register", "repeat password can not be empty!");
+			show_alert("repeat password can not be empty!");
 			return;
 		}
 
 		if (repeatPassword != password) {
-			show_box_alert("alert-popup-register", "repeat password and password are not matched!");
+			show_alert("repeat password and password are not matched!");
 			return;
 		}
     	var md5Password = hex_md5(password);
     	var data = {'nickName' : nickName, 'password': md5Password, 'email':email};
 		
-		$.post('/weblet/shopping/anonymous_action/signUp', $.param(data), function(data, status,jqXHR) {
+		$.post('/weblet/anonymous_action/signUp', $.param(data), function(data, status,jqXHR) {
 			var json = $.parseJSON(data);
 			var error = json.error;		
 			if (error == 'success') {
@@ -127,46 +120,43 @@ function sign_in(){
 		 
 		});
     
-    	}
+    }
 
 
-function find_password(){
-	var email = $("#find-pwd-email");
-	email = email.val();
+	function find_password(){
+		var email = $("#find-pwd-email").val();
 	
 
-	if (!email || email.length == 0){
-		show_box_alert("alert-popup-pwd", "email can not be empty!");
-		return;
-	}
+		if (!email || email.length == 0){
+			show_alert("email can not be empty!");
+			return;
+		}
 
 
     	
-	var data = {'email': email};
+		var data = {'email': email};
 
 
 		
-	$.post('/weblet/shopping/anonymous_action/findPassword',$.param(data) ,function(data, status,jqXHR) {
-		var json = $.parseJSON(data);
-		var error = json.error;		
-		if (error == 'success') {
-			$("#sign-in-email").val(email);
-			$("#sign-in-form").show();
-			$('#sign-up-form').hide();
-			$('#forget-pwd-form').hide();
+		$.post('/weblet/anonymous_action/findPassword',$.param(data) ,function(data, status,jqXHR) {
+			var json = $.parseJSON(data);
+			var error = json.error;		
+			if (error == 'success') {
+				$("#sign-in-email").val(email);
+				$("#sign-in-form").show();
+				$('#sign-up-form').hide();
+				$('#forget-pwd-form').hide();
 			
-		} else if (error == 'error_email'){
-			show_alert('email is not valid!');
-		} else if (error == 'email_not_found'){
-			show_alert('email is not found!');
-		} else {
-			show_alert('unknow error!');
+			} else if (error == 'error_email'){
+				show_alert('email is not valid!');
+			} else if (error == 'email_not_found'){
+				show_alert('email is not found!');
+			} else {
+				show_alert('unknow error!');
 
-		}
-	});
-
-	
-}
+			}
+		});
+	}
 
 
 </script>
@@ -185,12 +175,12 @@ function find_password(){
 					<input id="sign-in-email" value="${email!""}" placeholder="Email" type="email" required>
 					<input type="password" id="sign-in-pwd" placeholder="Password" required>
 					<div>
-						<span class="right"><a href="#" class="button" onclick="sign_in();return false;">Sign In</a></span>
+						<span class="right"><a href="#" class="button tiny" onclick="sign_in();return false;">Sign In</a></span>
 					</div>
 				</fieldset>
 			</form>
-			<span class="left"><a href="#" onclick="$('#sign-in-form').hide();$('#forget-pwd-form').hide();$('#sign-up-form').show();">Sign Up</a></span>
-			<span class="right"><a href="#" onclick="$('#sign-in-form').hide();$('#forget-pwd-form').show();$('#sign-up-form').hide();">Forget Password</a></span>
+			<span class="left"><a href="#" onclick="$('#sign-in-form').hide();$('#forget-pwd-form').hide();$('#sign-up-form').show();return false;">Sign Up</a></span>
+			<span class="right"><a href="#" onclick="$('#sign-in-form').hide();$('#forget-pwd-form').show();$('#sign-up-form').hide();return false;">Forget Password</a></span>
 		</div>
 		
 		<div id="sign-up-form" class="clearfix hide">
@@ -202,12 +192,12 @@ function find_password(){
 					<input type="password" id="sign-up-pwd-repeat" placeholder="Repeat Password" required>
 					<input type="text" id="sign-up-nickName" placeholder="nick name" required>
 					<div>
-						<span class="right"><a href="#" class="button" onclick="sign_up();return false;">Sign Up</a></span>
+						<span class="right"><a href="#" class="button tiny" onclick="sign_up();return false;">Sign Up</a></span>
 					</div>
 				</fieldset>
 			</form>
-			<span class="left"><a href="#" onclick="$('#sign-in-form').show();$('#forget-pwd-form').hide();$('#sign-up-form').hide();">Sign In</a></span>
-			<span class="right"><a href="#" onclick="$('#sign-in-form').hide();$('#forget-pwd-form').show();$('#sign-up-form').hide();">Forget Password</a></span>
+			<span class="left"><a href="#" onclick="$('#sign-in-form').show();$('#forget-pwd-form').hide();$('#sign-up-form').hide();return false;">Sign In</a></span>
+			<span class="right"><a href="#" onclick="$('#sign-in-form').hide();$('#forget-pwd-form').show();$('#sign-up-form').hide();return false;">Forget Password</a></span>
 		</div>
 		
 		<div id="forget-pwd-form" class="clearfix hide">
@@ -217,12 +207,12 @@ function find_password(){
 					<input id="sign-up-email" value="${email!""}" placeholder="Email" type="email" required>
 					
 					<div>
-						<span class="right"><a href="#" class="button alert" onclick="forget_password();return false;">Email Me</a></span>
+						<span class="right"><a href="#" class="button tiny" onclick="forget_password();return false;">Email Me</a></span>
 					</div>
 				</fieldset>
 			</form>
-			<span class="left"><a href="#" onclick="$('#sign-in-form').show();$('#forget-pwd-form').hide();$('#sign-up-form').hide();">Sign In</a></span>
-			<span class="right"><a href="#" onclick="$('#sign-in-form').hide();$('#forget-pwd-form').hide();$('#sign-up-form').show();">Sign Up</a></span>
+			<span class="left"><a href="#" onclick="$('#sign-in-form').show();$('#forget-pwd-form').hide();$('#sign-up-form').hide();return false;">Sign In</a></span>
+			<span class="right"><a href="#" onclick="$('#sign-in-form').hide();$('#forget-pwd-form').hide();$('#sign-up-form').show();return false;">Sign Up</a></span>
 		</div>
 	</div>
 </div>

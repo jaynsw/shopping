@@ -1,11 +1,6 @@
 <#import "common.ftl" as common />
 
 
-<#set address = "/tpl/sign_in?redirect=/tpl/shipping_address">
-<#set _current_account = _session.getAttribute("_currentUser")>
-<#if _current_account??>
-<#set address = "/tpl/shipping_address">
-</#if>
 
 <#set title="check out">
 <#include "top.ftl" encoding="UTF-8">
@@ -19,11 +14,11 @@ function remove_item(productId, option){
 
 	var data = {'productId': productId,'option':option};
 		
-	$.post('/weblet/shopping/anonymous_action/removeItemShoppingCart',$.param(data) ,function(data, status,jqXHR) {
+	$.post('/weblet/anonymous_action/removeItemShoppingCart',$.param(data) ,function(data, status,jqXHR) {
 		var json = $.parseJSON(data);
 		var error = json.error;		
 		if (error == 'success') {
-			window.location = '/tpl/checkout';
+			window.location.reload();
 		
 		} else {
 			show_alert('failed!');
@@ -49,7 +44,7 @@ function remove_item(productId, option){
 	</div>	
 </div>	
 
-<div class="row"><div class="large-12 columns"><a href="${address}" class="button right">Checkout</a></div></div>
+<div class="row"><div class="large-12 columns"><a href="/tpl/s/cust/shipping_address" class="button right">Checkout</a></div></div>
 
 <#set params = {}>
 <#set shoppingCartJSON = _plugInLoader.load("com.smallwebstore.ex.shopping.plugin.ShoppingCartPlugin",params)>					

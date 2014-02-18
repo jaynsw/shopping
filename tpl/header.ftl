@@ -14,13 +14,13 @@
 				<section class="top-bar-section">
 				<!-- Right Nav Section -->
 					<ul class="right">
-<#if _currenAccount??>
+<#if _currentUser??>
 						<li class="divider"></li>
-						<li class="has-dropdown"><a href="#">Hi, ${_currentAccount.nickName}</a>
+						<li class="has-dropdown"><a href="#">Hi, ${_currentUser.nickName}</a>
 							<ul class="dropdown">
-								<li><a href="/tpl/account_orders">Orders</a></li>
+								<li><a href="/tpl/s/cust/account_orders">Orders</a></li>
 								<li class="divider"></li>
-								<li><a href="/tpl/change_password">Change Password</a></li>
+								<li><a href="/tpl/s/cust/change_password">Change Password</a></li>
 								<li class="divider"></li>
 								<li><a href="/weblet/account_action/signOut">Sign Out</a></li>
 							</ul>
@@ -30,7 +30,7 @@
 						<li><a href="/tpl/sign_in">Sign In/ Sign On</a></li>
 </#if>
 						<li class="divider"></li>
-						<li><a href="/tpl/shopping_cart">Cart <span class="label">0</label></a></li>
+						<li><a href="/tpl/shopping_cart">Cart <span class="label">${_shoppingCartItemCount}</label></a></li>
 						<li class="divider"></li>
 						<li class="has-form">
 							<div class="row collapse">

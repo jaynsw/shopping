@@ -1,7 +1,7 @@
-<#global _currenAccount = _session.getAttribute("_currentUser")>
+<#global _currentUser = _session.getAttribute("_currentUser")>
 <#set params = {}>
 <#set shoppingCartJSON = _plugInLoader.load("com.smallwebstore.ex.shopping.plugin.ShoppingCartPlugin",params)>					
-<#golbal _shoppingCartItemCount = 0>
+<#global _shoppingCartItemCount = 0>
 <#if shoppingCartJSON??>
 	<#list shoppingCartJSON.items as cartItem>  
 		<#global _shoppingCartItemCount = _shoppingCartItemCount + cartItem.quantity>
@@ -16,12 +16,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>${title!""}</title>
 
-		<link rel="stylesheet" href="/css/normalize.css">
-		<link rel="stylesheet" href="/css/foundation.min.css">
+		<link rel="stylesheet" href="http://store.smallwebstore.com/css/normalize.css">
+		<link rel="stylesheet" href="http://store.smallwebstore.com/css/foundation.min.css">
 		
 		
-		<script src="/js/modernizr.js"></script>
-		<script src="/js/jquery.js"></script>
+		<script src="http://store.smallwebstore.com/js/vendor/modernizr.js"></script>
+		<script src="http://store.smallwebstore.com/js/vendor/jquery.js"></script>
 		
 		<script type="text/javascript">
 			

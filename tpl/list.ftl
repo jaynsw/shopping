@@ -9,12 +9,6 @@
 <#include "header.ftl" encoding="UTF-8">
 
 
-<#if (_currentAccount?? && _owner == _currentAccount.email)>
-<div class="right"><a class="btn btn-primary btn-lg" href="/tpl/modules?q=product">Add Products</a></div>
-</#if>
-
-<br/> 
-
 <div class="row">
 	<div class="large-12 columns">
 		<dl class="sub-nav">

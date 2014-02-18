@@ -3,21 +3,28 @@
 "host":"smtp.mail.yahoo.com",
 "port":465,
 "user":"dolameng@yahoo.com",
-"password":"password",
+"password":"qwerasdf",
 "from":"dolameng@yahoo.com",
 "ssl":"true"
 },
 "pay_success":{
 "subject":"{website} Paypal payment paid successfully ",
-"html":"<html><body><p>Dear {customer},</p><p>This is an email to notify we have received an order at {orderCreationTime} from {website}  with an amount {orderAmount}. For details of the order please click the <a href='{orderURL}'>link</a></p><br/>Kind Regards,<br/>{website}</body></html>"
+"html":"<html><body><p>Dear {customer},</p><p>This is an email to notify you we have received an order at {orderCreationTime} from {website}  with an amount {orderAmount}. For details of the order please click the <a href='{orderURL}'>link</a></p><br/>Kind Regards,<br/>{website}</body></html>"
+},
+"order_pending":{
+"subject":"{website} - Your order is pending ",
+"html":"<html><body><p>Dear {customer},</p><p>This is an email to notify you we received your order now. It will takes around 1 day to prepare then starts the delivery. For details of the order please click the <a href='{orderURL}'>link</a></p><br/>Kind Regards,<br/>{website}</body></html>"
 },
 "order_processing":{
 "subject":"{website} - Your order is processing ",
-"html":"<html><body><p>Dear {customer},</p><p>This is an email to notify we are processing your order now. It will takes around 1 day to prepare then starts the delivery. For details of the order please click the <a href='{orderURL}'>link</a></p><br/>Kind Regards,<br/>{website}</body></html>"
+"html":"<html><body><p>Dear {customer},</p><p>This is an email to notify you we are processing your order now. It will takes around 1 day to prepare then starts the delivery. For details of the order please click the <a href='{orderURL}'>link</a></p><br/>Kind Regards,<br/>{website}</body></html>"
 },
 "order_shipped":{
-"subject":"{website} - Your order is processing ",
+"subject":"{website} - Your ordered stuffs are shipped ",
 "html":"<html><body><p>Dear {customer},Congratulations!<br><p>We are pleased to notify your ordered stuffs have been shipped. For details of the order and how fast it will be shipped, please click the <a href='{orderURL}'>link</a></p><br/>Kind Regards,<br/>{website}</body></html>"
 },
-
+"order_received":{
+"subject":"{website} - Your order stuffs are received ",
+"html":"<html><body><p>Dear {customer},Congratulations!<br><p>We are pleased to notify your ordered stuffs have been received. For details of the order and how fast it will be shipped, please click the <a href='{orderURL}'>link</a></p><br/>Kind Regards,<br/>{website}</body></html>"
+},
 }

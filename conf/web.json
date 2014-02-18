@@ -3,8 +3,8 @@
 "signIn":"/tpl/sign_in",
 "mappings":
 [
-{"url":"/weblet/s/admin/shopping/admin_action/{action}","weblet":"com.smallwebstore.ex.shopping.web.AdminAction"},
-{"url":"/weblet/s/cust/shopping/account_action/{action}","weblet":"com.smallwebstore.ex.shopping.web.AccountAction"},
-url":"/weblet/shopping/anonymous_action/{action}","weblet":"com.smallwebstore.ex.shopping.web.AnonymousAction"}
+{"url":"/weblet/s/admin/admin_action/{action}","weblet":"com.smallwebstore.ex.shopping.web.AdminAction"},
+{"url":"/weblet/s/cust/account_action/{action}","weblet":"com.smallwebstore.ex.shopping.web.AccountAction"},
+{"url":"/weblet/anonymous_action/{action}","weblet":"com.smallwebstore.ex.shopping.web.AnonymousAction"}
 ]
 }

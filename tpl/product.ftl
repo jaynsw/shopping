@@ -38,44 +38,13 @@
 </div>
 </#if>
 <script>
-function delete_product(){
-
-	var data = {'path': '${folderPath}'};
-		
-	$.post('/weblet/file_action/deleteFile',$.param(data) ,function(data, status,jqXHR) {
-		var json = $.parseJSON(data);
-		var error = json.error;		
-		if (error == 'success') {
-			window.location = '/tpl/list';
-		
-		} else {
-			show_alert('failed!');
-		}
-	});
-}
-
-function clone_product(){
-
-	var data = {'path': '${folderPath}'};
-		
-	$.post('/weblet/file_action/cloneFolder',$.param(data) ,function(data, status,jqXHR) {
-		var json = $.parseJSON(data);
-		var error = json.error;		
-		if (error == 'success') {
-			window.location = '/tpl/list';
-		
-		} else {
-			show_alert('failed!');
-		}
-	});
-}
 
 function add_shopping_cart(){
 	var quantity = $("#quantity").val();
 	var option = $("#option").val();
 	var data = {'productId':'${productId}','product':'${name}','sku': '${sku}','price':'${price}','quantity':quantity,'option':option};
 		
-	$.post('/weblet/shopping/anonymous_action/addItemShoppingCart',$.param(data) ,function(data, status,jqXHR) {
+	$.post('/weblet/anonymous_action/addItemShoppingCart',$.param(data) ,function(data, status,jqXHR) {
 		var json = $.parseJSON(data);
 		var error = json.error;		
 		if (error == 'success') {
@@ -88,32 +57,12 @@ function add_shopping_cart(){
 }
 jQuery(function($) {
 
-var spinner = $( ".spinner" ).spinner({
-	create: function( event, ui ) {
-		//add custom classes and icons
-		$(this)
-		.next().addClass('btn btn-success').html('<i class="icon-plus"></i>')
-		.next().addClass('btn btn-danger').html('<i class="icon-minus"></i>')
-	
-		//larger buttons on touch devices
-		if(ace.click_event == "tap") $(this).closest('.ui-spinner').addClass('ui-spinner-touch');
-	}
-});
+
 
 });
 
 </script>
 
-<#if (_currentAccount?? && _owner == _currentAccount.email)>
-<div class="row">
-	<div class="large-12 columns">
-		<ul class="button-group">
-			<a class="button small" href="#" onclick="delete_product();return false;">Delete Product</a>
-			<a class="button small" href="#" onclick="clone_product();return false;">Clone Product</a>
-		</ul>
-	</div>
-</div>
-</#if>
 
 <div class="row">
 	<div class="large-8 columns">
@@ -143,7 +92,7 @@ var spinner = $( ".spinner" ).spinner({
 			</select>	
 </#if>
 			<h3><@common.money productJSON.price /></h3>
-			<a class="button" href="#" onclick="add_shopping_cart();return false;" >Buy Now</a>			
+			<a class="button tiny" href="#" onclick="add_shopping_cart();return false;" >Buy Now</a>			
 		</div>
 	</div>
 </div>

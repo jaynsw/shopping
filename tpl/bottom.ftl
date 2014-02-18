@@ -15,7 +15,7 @@
 			</div>
 		</div>
 	</footer><!-- End Footer -->
-	<script src="/js/foundation.min.js"></script>
+	<script src="http://store.smallwebstore.com/js/foundation.min.js"></script>
 	
 	<script>
 		$(document).foundation();
