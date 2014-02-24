@@ -24,7 +24,7 @@ jQuery(function($) {
 <br/>
 
 <div class="row">
-	<div class="large-6 large-centered columns">
+	<div class="large-12 columns">
 <div data-alert style="display: none;" class="alert-box" id="alert-popup">
 	<span id="alert-message"></span>
 	<a href="#" class="close">&times;</a>
@@ -43,19 +43,16 @@ jQuery(function($) {
 		
 		
 <div class="row">
-	<div class="large-6 large-centered columns">
- 		
+	<div class="large-12 columns">
+<table width="100%"> 		
 <#list order.itemList as orderItem> 
- 		<div class="row">
- 			<div class="large-6 columns">
-				<a href="/tpl/product?id=${orderItem.productId}"><img src="/docs/products/${orderItem.productId}/product.png?sz=400x400"  alt="${orderItem.product} ${orderItem.option}" /></a>
-			</div>
-			<div class="panel large-6 columns">
-				<h5>${orderItem.product} [${orderItem.option}]</h5>
-				<h6 class="subheader">[<@common.money orderItem.price />] X ${orderItem.quantity}</h6>
-			</div>
-		</div>
+<tr>
+	<td><a href="/tpl/product?id=${orderItem.productId}"><img src="/docs/products/${orderItem.productId}/product.png?sz=100x100"  alt="${orderItem.product} ${orderItem.option}" /></a></td>
+	<td>${orderItem.product} [${orderItem.option}]</td>
+	<td>[<@common.money orderItem.price />] X ${orderItem.quantity}</td>
+</tr>
 </#list>
+</table>
 	</div>
 </div>
 
@@ -64,7 +61,7 @@ jQuery(function($) {
 	</#if>
 
 <div class="row">
-	<div class="large-6 large-centered columns">
+	<div class="large-12 columns">
 	
 		
 		<div class="panel clearfix">

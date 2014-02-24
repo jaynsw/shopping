@@ -1,0 +1,12 @@
+{
+"shopName":"Jay's Australian Products",
+"headerNav":[
+{"title":"quilt","url":"/tpl/search?q=quilt"},
+{"title":"boots","url":"/tpl/search?q=boots"}
+],
+"footerNav":[
+{"title":"Contact","url":"/tpl/contact"},
+{"title":"Facebook","url":"http://facebook.com/smallwebstore"},
+{"title":"Ebay","url":"http://ebay.com/smallwebstore"}
+]
+}

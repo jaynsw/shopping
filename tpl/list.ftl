@@ -8,18 +8,12 @@
 <#include "top.ftl" encoding="UTF-8">
 <#include "header.ftl" encoding="UTF-8">
 
-
-<div class="row">
-	<div class="large-12 columns">
 		<dl class="sub-nav">
-			<dt>Tags:</dt>
-			<dd class="active"><a href="#">LV</a></dd>
-			<dd><a href="#">David</a></dd>
-			<dd><a href="#">Channel</a></dd>
-			<dd><a href="#">UGG</a></dd>
+<#list 	navJSON.headerNav as ch>			
+	<dd><a href="${ch.url}">${ch.title}</a></dd>
+</#list>
 		</dl>
-	</div>
-</div>
+
 
 <div class="row">
 	<div class="large-12 columns">
@@ -33,13 +27,12 @@
 	<#set productJSON = _documentLoader.get(productPath)>
 
 			<li>
-				<div>
-					<a href="/tpl/product?id=${productFolder.name}"><img src="${photoPath}?sz=400x400" ></a>
+				<a href="/tpl/product?id=${productFolder.name}"><div>
+					<img src="${photoPath}?sz=400x400" >
 					<div class="panel">
-						<h5>${productJSON.name}</h5>
 						<h6 class="subheader"><@common.money productJSON.price /></h6>
 					</div>
-				</div>
+				</div></a>
 			</li>
 </#list>
 		</ul>

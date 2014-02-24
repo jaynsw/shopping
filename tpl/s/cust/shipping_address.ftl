@@ -83,7 +83,7 @@ function save_addressBook(){
 
 	var data = {'country': country,'street':street,'city':city,'state':state,'postcode':postcode,'lastName':lastName,'firstName':firstName,'telephone':telephone};
 		
-	$.post('/weblet/account_action/saveAddressBook',$.param(data) ,function(data, status,jqXHR) {
+	$.post('/weblet/s/cust/account_action/saveAddressBook',$.param(data) ,function(data, status,jqXHR) {
 		var json = $.parseJSON(data);
 		var error = json.error;		
 		if (error == 'success') {
@@ -100,26 +100,8 @@ function save_addressBook(){
 <#set params = {}>
 <#set addressBookJSON = _plugInLoader.load("com.smallwebstore.ex.shopping.plugin.AccountAddressBookPlugin",params)>
 
-
-
-<br/>
-
 <div class="row">
 	<div class="large-12 columns">
-		<dl class="sub-nav">
-			<dt>Check Out Precss:</dt>
-			<dd>Shopping Cart</dd>
-			<dd class="active"><a href="#">Billing / Shipping Address</a></dd>
-			<dd>Shipping Options</dd>
-			<dd>order Review</dd>
-			<dd>Payment Result</dd>
-		</dl>
-	</div>	
-</div>
-
-
-<div class="row">
-	<div class="large-6 large-centered columns">
 	
 		<div data-alert class="alert-box" id="alert-popup" style="display:none;">
 			<span id="alert-message"></span>
@@ -142,8 +124,8 @@ function save_addressBook(){
  					<li class="email"><a href="#">${addressBook.email}</a></li>
 				</ul>
 				<div class="clearfix">
-					<span class="left"><a href="#" class="button small secondary" onclick="$('#edit-address-form').show();$('#cur_address_book').hide();return false;">Edit this address</a></span>
-					<span class="right"><a href="/tpl/s/cust/shipping" class="button small">Use this address</a></span>					
+					<span class="left"><a href="#" class="button tiny" onclick="$('#edit-address-form').show();$('#cur_address_book').hide();return false;">Edit this address</a></span>
+					<span class="right"><a href="/tpl/s/cust/shipping" class="button tiny alert">Use this address</a></span>					
 				</div>
 			</div>
 	<#else>
@@ -174,7 +156,7 @@ function save_addressBook(){
 				<input type="text" value="${(addressBook.lastName)!""}"  id="address-last-name" placeholder="Last Name"/>
 				<input type="text" value="${(addressBook.telephone)!""}"  id="address-telephone" placeholder="Telephone"/>
 				<div>
-					<span class="right"><a href="#" class="button"  onclick="save_addressBook();return false;">Save</a></span>
+					<span class="right"><a href="#" class="button tiny"  onclick="save_addressBook();return false;">Save</a></span>
 				</div>
 			</fieldset>
 		</form>

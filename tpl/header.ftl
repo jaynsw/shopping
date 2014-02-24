@@ -1,19 +1,22 @@
+<#global navJSON = _documentLoader.get("/conf/nav.json")>
 <body>
 
 <!-- Navigation -->
 
-	<div class="row">
-		<div class="large-12 columns">
+
 			<nav class="top-bar" data-topbar>
 				<ul class="title-area">
 				<!-- Title Area -->
-					<li class="name"><h1><a href="/">Jay's Shoes Store</a></h1></li>
+					<li class="name"><h1><a href="/">${navJSON.shopName}</a></h1></li>
 					<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
 				</ul>
 
 				<section class="top-bar-section">
 				<!-- Right Nav Section -->
 					<ul class="right">
+<#list 	navJSON.headerNav as ch>			
+						<li><a href="${ch.url}">${ch.title}</a></li>
+</#list>
 <#if _currentUser??>
 						<li class="divider"></li>
 						<li class="has-dropdown"><a href="#">Hi, ${_currentUser.nickName}</a>
@@ -41,5 +44,4 @@
 					</ul>
 				</section>
 			</nav><!-- End Top Bar -->
-		</div>
-	</div><!-- End Navigation -->
+

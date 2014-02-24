@@ -22,7 +22,7 @@ function paypal(){
 }
 
 </script>
- 
+
 <form id="paypal-form" action="${paypalJSON.url}" method="post"> 
   <!-- Identify your business so that you can collect the payments. --> 
 

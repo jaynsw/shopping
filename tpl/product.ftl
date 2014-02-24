@@ -1,5 +1,4 @@
 <#import "common.ftl" as common />
-<#import "editor.ftl" as editor />
 
 <#set productId = _request.getParameter("id")>
 
@@ -15,8 +14,10 @@
 <#set name="${productJSON.name}">
 <#set price="${productJSON.price}">
 
-<#set options="${productJSON.options}">
 
+<#if (productJSON.options)?? >
+	<#set options="${productJSON.options}">
+</#if>
 <#set title="${productJSON.name}">
 <#include "top.ftl" encoding="UTF-8">
 <#include "header.ftl" encoding="UTF-8">
@@ -66,10 +67,8 @@ jQuery(function($) {
 
 <div class="row">
 	<div class="large-8 columns">
-<@editor.edit_json folderPath + "/product.json"/>	
 <#if (photos?size > 0)>
 		<ul class="small-block-grid-2 large-block-grid-4">
-<@editor.file folderPath />
 <#list photos as photo>	
 	<#set webPhoto = photo.path?substring(7)>
 			<li><img src="${webPhoto}?sz=400x400" ></li>
@@ -90,9 +89,11 @@ jQuery(function($) {
 				<option value="${options}:${val}">${val}</option>
 	</#list>
 			</select>	
+<#else>
+		<input type="hidden" id="option" value="">
 </#if>
 			<h3><@common.money productJSON.price /></h3>
-			<a class="button tiny" href="#" onclick="add_shopping_cart();return false;" >Buy Now</a>			
+			<a class="button tiny alert" href="#" onclick="add_shopping_cart();return false;" >Buy Now</a>			
 		</div>
 	</div>
 </div>

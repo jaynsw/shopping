@@ -30,7 +30,7 @@ ${val?iso(_timezone)?string("yyyy-MM-dd HH:mm:ss")}
 </#macro>
 
 <#macro money p>
-${_currency} ${p?string("###0.00")}
+${_currency} $${p?string("###0.00")}
 </#macro>
 
 <#macro amount p>

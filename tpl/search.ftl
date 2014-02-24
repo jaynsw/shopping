@@ -9,18 +9,7 @@
 <#include "top.ftl" encoding="UTF-8">
 <#include "header.ftl" encoding="UTF-8">
 
-<div class="row">
-	<div class="large-12 columns">
-		<dl class="sub-nav">
-			<dt>Tags:</dt>
-			<dd class="active"><a href="#">LV</a></dd>
-			<dd><a href="#">David</a></dd>
-			<dd><a href="#">Channel</a></dd>
-			<dd><a href="#">UGG</a></dd>
-		</dl>
-	</div>
-</div>
-
+<br/>
 <div class="row">
 	<div class="large-12 columns">
 		<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-6">
@@ -31,16 +20,26 @@
 	<#set photoPath = webPath + "/product.png">
 	<#set productPath = folderPath + "/product.json">
 	<#set productJSON = _documentLoader.get(productPath)>
+	<#set showProduct = false>
+	<#if q?? >
+		<#if (productJSON.tag?? && productJSON.tag?index_of(q) >= 0)>
+			<#set showProduct = true>
+		</#if>
+	<#else>
+		<#set showProduct = true>
+	</#if>
 
+	<#if showProduct >
 			<li>
-				<div>
-					<a href="/tpl/product?id=${productFolder.name}"><img src="${photoPath}?sz=400x400" ></a>
+				<a href="/tpl/product?id=${productFolder.name}"><div>
+					<img src="${photoPath}?sz=400x400" >
 					<div class="panel">
 						<h5>${productJSON.name}</h5>
 						<h6 class="subheader"><@common.money productJSON.price /></h6>
 					</div>
-				</div>
+				</div></a>
 			</li>
+	</#if>
 </#list>
 		</ul>
 	</div>

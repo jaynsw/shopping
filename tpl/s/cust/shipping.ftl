@@ -41,28 +41,9 @@ jQuery(function($) {
 });
 </script>
 
-
-<br/>
-
+		
 <div class="row">
 	<div class="large-12 columns">
-		<dl class="sub-nav">
-			<dt>Check Out Precss:</dt>
-			<dd>Shopping Cart</dd>
-			<dd>Billing / Shipping Address</dd>
-			<dd class="active"><a href="#">Shipping Options</a></dd>
-			<dd>order Review</dd>
-			<dd>Payment Result</dd>
-		</dl>
-	</div>	
-</div>
-		
-	
-
-
-		
-<div class="row">
-	<div class="large-6 large-centered columns">
 	
 		<div data-alert class="alert-box" id="alert-popup" style="display:none;">
 			<span id="alert-message"></span>
@@ -80,7 +61,7 @@ jQuery(function($) {
 			</ul>	
 		
 			<div class="right">
-				<a href="#" class="button" onclick="save_shipping();return false;">Next</a>
+				<a href="#" class="button tiny alert" onclick="save_shipping();return false;">Next</a>
 			</div>
 		</div>
 </#if>
