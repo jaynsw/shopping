@@ -9,41 +9,30 @@
 <#set productJSON = _documentLoader.get(productPath)>
 <#set photos = _documentLoader.list(folderPath + "/photos","image/*")>
 
-<#set tag="${productJSON.tag}">
-<#set sku="${productJSON.sku}">
-<#set name="${productJSON.name}">
-<#set price="${productJSON.price}">
+<#set tag=productJSON.tag>
+<#set sku=productJSON.sku>
+<#set name=productJSON.name>
+<#set price=productJSON.price>
 
 
 <#if (productJSON.options)?? >
 	<#set options="${productJSON.options}">
 </#if>
-<#set title="${productJSON.name}">
+
+
+<#global seo_title = name>
+<#global seo_description = name>
+<#global seo_keywords = tag>
+
 <#include "top.ftl" encoding="UTF-8">
 <#include "header.ftl" encoding="UTF-8">
 
-
-
-<#if tag??>
-<div class="row">
-	<div class="large-12 columns">
-		<ul class="breadcrumbs">
-<#set lll = "">
-<#set pph =  tag?split(",") >
-			<li><a href="/">Root</a></li>
-<#list pph as ph>
-			<li><a href="/tpl/search?q=${ph}">${ph}</a> </li>
-</#list>
-		</ul>
-	</div>
-</div>
-</#if>
 <script>
 
 function add_shopping_cart(){
 	var quantity = $("#quantity").val();
 	var option = $("#option").val();
-	var data = {'productId':'${productId}','product':'${name}','sku': '${sku}','price':'${price}','quantity':quantity,'option':option};
+	var data = {'productId':'${productId}','product':'${name}','sku': '${sku}','price':'<@common.amount price />','quantity':quantity,'option':option};
 		
 	$.post('/weblet/anonymous_action/addItemShoppingCart',$.param(data) ,function(data, status,jqXHR) {
 		var json = $.parseJSON(data);
@@ -63,6 +52,23 @@ jQuery(function($) {
 });
 
 </script>
+
+<br/>
+
+<#if tag??>
+<div class="row">
+	<div class="large-12 columns">
+		<ul class="breadcrumbs">
+<#set lll = "">
+<#set pph =  tag?split(",") >
+			<li><a href="/">Home</a></li>
+<#list pph as ph>
+			<li><a href="/tpl/search?q=${ph}">${ph}</a> </li>
+</#list>
+		</ul>
+	</div>
+</div>
+</#if>
 
 
 <div class="row">

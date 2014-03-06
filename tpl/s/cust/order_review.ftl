@@ -70,6 +70,17 @@ function save_order(){
 		<#list shoppingCartJSON.items as cartItem>  
 			<#set itemCount = itemCount + cartItem.quantity>
 		</#list>
+<br/>
+
+<div class="row">
+	<div class="large-12 columns">
+		<ul class="breadcrumbs">
+			<li><a href="/">Home</a></li>
+			<li class="current">Order Review</li>
+		</ul>
+	</div>
+</div>
+
 
 <#if (itemCount > 0)>
 <div class="row">

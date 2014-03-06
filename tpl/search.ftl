@@ -33,10 +33,7 @@
 			<li>
 				<a href="/tpl/product?id=${productFolder.name}"><div>
 					<img src="${photoPath}?sz=400x400" >
-					<div class="panel">
-						<h5>${productJSON.name}</h5>
-						<h6 class="subheader"><@common.money productJSON.price /></h6>
-					</div>
+					<span class="label"><@common.money productJSON.price /></span>
 				</div></a>
 			</li>
 	</#if>

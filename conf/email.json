@@ -2,9 +2,9 @@
 "smtp":{
 "host":"smtp.mail.yahoo.com",
 "port":465,
-"user":"dolameng@yahoo.com",
-"password":"qwerasdf",
-"from":"dolameng@yahoo.com",
+"user":"xxx@yahoo.com",
+"password":"xxx",
+"from":"xxx@yahoo.com",
 "ssl":"true"
 },
 "pay_success":{

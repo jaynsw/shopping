@@ -1,47 +1,42 @@
-<#global navJSON = _documentLoader.get("/conf/nav.json")>
 <body>
 
 <!-- Navigation -->
 
+<div class="off-canvas-wrap docs-wrap">
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon"><span></span></a>
+      </section>
 
-			<nav class="top-bar" data-topbar>
-				<ul class="title-area">
-				<!-- Title Area -->
-					<li class="name"><h1><a href="/">${navJSON.shopName}</a></h1></li>
-					<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-				</ul>
-
-				<section class="top-bar-section">
-				<!-- Right Nav Section -->
-					<ul class="right">
-<#list 	navJSON.headerNav as ch>			
-						<li><a href="${ch.url}">${ch.title}</a></li>
+      <section class="middle tab-bar-section">
+        <a href="/"><h1 class="title">
+		${navJSON.shopName}
+        </h1></a>
+      </section>
+    </nav>
+    
+    
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><label>Categories</label></li>
+<#list navJSON.headerNav as ch>			
+		<li><a href="${ch.url}">${ch.title}</a></li>
 </#list>
-<#if _currentUser??>
-						<li class="divider"></li>
-						<li class="has-dropdown"><a href="#">Hi, ${_currentUser.nickName}</a>
-							<ul class="dropdown">
-								<li><a href="/tpl/s/cust/account_orders">Orders</a></li>
-								<li class="divider"></li>
-								<li><a href="/tpl/s/cust/change_password">Change Password</a></li>
-								<li class="divider"></li>
-								<li><a href="/weblet/account_action/signOut">Sign Out</a></li>
-							</ul>
-						</li>
-<#else>					
-						<li class="divider"></li>
-						<li><a href="/tpl/sign_in">Sign In/ Sign On</a></li>
-</#if>
-						<li class="divider"></li>
-						<li><a href="/tpl/shopping_cart">Cart <span class="label">${_shoppingCartItemCount}</label></a></li>
-						<li class="divider"></li>
-						<li class="has-form">
-							<div class="row collapse">
-								<div class="large-8 small-9 columns"><input type="text" placeholder="Find Stuff"></div>
-								<div class="large-4 small-3 columns"><a href="#" class=" button expand">Search</a></div>
-							</div>
-						</li>
-					</ul>
-				</section>
-			</nav><!-- End Top Bar -->
+		<li><label>Hi ${_currentUser.nickName}</label></li>
+		<li><a href="/tpl/shopping_cart">Cart <span class="label">${_shoppingCartItemCount}</label></a></li>
 
+		<li><a href="/tpl/s/cust/account_orders">Orders</a></li>
+		<li><a href="/tpl/s/cust/change_password">Change Password</a></li>
+		<li><a href="/weblet/account_action/signOut">Sign Out</a></li>
+		<li class="has-form">
+        	<form action="/tpl/search">
+			
+				<input type="text" name="q" placeholder="Search...">
+				
+			</form>
+		</li>
+      </ul>
+    </aside>
+
+	<section class="main-section">

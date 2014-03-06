@@ -3,18 +3,10 @@
 <#set error = _request.getParameter("error") />
 <#set redirect = _request.getParameter("redirect") />
 
-
-<#set title="Sign In">
-<#set pageId="sign_in">
-
 <#include "top.ftl" encoding="UTF-8">
 <#include "header.ftl" encoding="UTF-8">
 
-
-
-			
-
-<script type="text/javascript" src="http://store.smallwebstore.com/js/md5.js"></script>
+<script type="text/javascript" src="http://www.smallwebstore.com/js/md5.js"></script>
 <script>
 	function sign_in(){
 		var email = $("#sign-in-email");
@@ -161,7 +153,7 @@
 
 </script>
 
-
+<br/>
 <div class="row">
 	<div class="large-6 large-centered columns">
 		<div data-alert class="alert-box" id="alert-popup" style="display:none;">

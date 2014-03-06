@@ -100,6 +100,16 @@ function save_addressBook(){
 <#set params = {}>
 <#set addressBookJSON = _plugInLoader.load("com.smallwebstore.ex.shopping.plugin.AccountAddressBookPlugin",params)>
 
+<br/>
+<div class="row">
+	<div class="large-12 columns">
+		<ul class="breadcrumbs">
+			<li><a href="/">Home</a></li>
+			<li class="current">Shipping Address</li>
+		</ul>
+	</div>
+</div>
+
 <div class="row">
 	<div class="large-12 columns">
 	

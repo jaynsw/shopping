@@ -33,7 +33,7 @@ jQuery(function($) {
 <#if (ordersJSON.orders)??>
 
 <#set pageCount = (ordersJSON.count / 50 + 1) >
-
+<br/>
 <#if (ordersJSON.orders?size > 0)>
 <div class="row">
 	<div class="large-12 large-centered columns">

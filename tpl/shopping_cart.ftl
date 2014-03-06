@@ -1,8 +1,6 @@
 <#import "common.ftl" as common />
 
 
-
-<#set title="check out">
 <#include "top.ftl" encoding="UTF-8">
 <#include "header.ftl" encoding="UTF-8">
 
@@ -30,8 +28,14 @@ function remove_item(productId, option){
 </script>
 
 <br/>
-
-
+<div class="row">
+	<div class="large-12 columns">
+		<ul class="breadcrumbs">
+			<li><a href="/">Home</a></li>
+			<li class="current">Shippping</li>
+		</ul>
+	</div>
+</div>
 
 <div class="row"><div class="large-12 columns"><a href="/tpl/s/cust/shipping_address" class="button tiny right alert">Checkout</a></div></div>
 
@@ -53,8 +57,11 @@ function remove_item(productId, option){
 
 <#list shoppingCartJSON.items as cartItem>
 	<tr>
- 		<td><a href="/tpl/product?id=${cartItem.productId}"><img src="/docs/products/${cartItem.productId}/product.png?sz=100x100"  alt="${cartItem.product} ${cartItem.option}" /></a></td>
-		<td>${cartItem.product} [${cartItem.option}]</td>
+ 		<td>${cartItem.product} 
+<#if (cartItem.option?length > 0)	>
+		[${cartItem.option}]
+</#if>		
+ 		</td>
 		<td><@common.money cartItem.price /> X ${cartItem.quantity}</td>
 		<td><a href="#" class="button tiny" onclick="remove_item('${cartItem.productId}','${cartItem.option}');return false;">Delete</a></td>
 	</tr>

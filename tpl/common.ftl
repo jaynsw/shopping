@@ -26,15 +26,21 @@
 </#macro>
 
 <#macro dateTime val>
+<#compress>
 ${val?iso(_timezone)?string("yyyy-MM-dd HH:mm:ss")}
+</#compress>
 </#macro>
 
 <#macro money p>
+<#compress>
 ${_currency} $${p?string("###0.00")}
+</#compress>
 </#macro>
 
 <#macro amount p>
+<#compress>
 ${p?string("###0.00")}
+</#compress>
 </#macro>
 
 
